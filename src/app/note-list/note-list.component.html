@@ -228,16 +228,14 @@
       </button>
     </div>
   </div>
+  @if (status == 'notes') {
   <div>
-    <ul>
-      @for (item of (this.noteService.items$ | async); track item) {
-      <li>
-        {{ item["title"] }}
-      </li>
-      }
-    </ul>
-    <!-- @for (note of noteList; track note) {
+    @for (note of getList(); track note) {
     <app-note [note]="note"></app-note>
-    } -->
+    }
   </div>
+  } @else if (status == 'trash') { @for (trashNote of getTrashList(); track
+  trashNote) {
+  <app-note [note]="trashNote"></app-note>
+  } }
 </div>
